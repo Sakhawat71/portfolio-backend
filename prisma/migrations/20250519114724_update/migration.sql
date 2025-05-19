@@ -1,6 +1,38 @@
--- Active: 1746222557834@@127.0.0.1@5432@portfolio@public
+/*
+  Warnings:
+
+  - You are about to drop the `Blog` table. If the table is not empty, all the data it contains will be lost.
+  - You are about to drop the `Contact` table. If the table is not empty, all the data it contains will be lost.
+  - You are about to drop the `Education` table. If the table is not empty, all the data it contains will be lost.
+  - You are about to drop the `Experience` table. If the table is not empty, all the data it contains will be lost.
+  - You are about to drop the `Project` table. If the table is not empty, all the data it contains will be lost.
+  - You are about to drop the `Skill` table. If the table is not empty, all the data it contains will be lost.
+  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
+
+*/
+-- DropTable
+DROP TABLE "Blog";
+
+-- DropTable
+DROP TABLE "Contact";
+
+-- DropTable
+DROP TABLE "Education";
+
+-- DropTable
+DROP TABLE "Experience";
+
+-- DropTable
+DROP TABLE "Project";
+
+-- DropTable
+DROP TABLE "Skill";
+
+-- DropTable
+DROP TABLE "User";
+
 -- CreateTable
-CREATE TABLE "User" (
+CREATE TABLE "users" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -9,11 +41,11 @@ CREATE TABLE "User" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Skill" (
+CREATE TABLE "skills" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "icon" TEXT NOT NULL,
@@ -21,11 +53,11 @@ CREATE TABLE "Skill" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Skill_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "skills_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Project" (
+CREATE TABLE "projects" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
@@ -41,11 +73,11 @@ CREATE TABLE "Project" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Project_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "projects_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Blog" (
+CREATE TABLE "blogs" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "content" TEXT NOT NULL,
@@ -59,11 +91,11 @@ CREATE TABLE "Blog" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Blog_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "blogs_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Experience" (
+CREATE TABLE "experiences" (
     "id" TEXT NOT NULL,
     "company" TEXT NOT NULL,
     "position" TEXT NOT NULL,
@@ -73,11 +105,11 @@ CREATE TABLE "Experience" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Experience_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "experiences_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Education" (
+CREATE TABLE "educations" (
     "id" TEXT NOT NULL,
     "institution" TEXT NOT NULL,
     "degree" TEXT NOT NULL,
@@ -87,11 +119,11 @@ CREATE TABLE "Education" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Education_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "educations_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Contact" (
+CREATE TABLE "contacts" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -99,11 +131,11 @@ CREATE TABLE "Contact" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Contact_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "contacts_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Blog_slug_key" ON "Blog"("slug");
+CREATE UNIQUE INDEX "blogs_slug_key" ON "blogs"("slug");

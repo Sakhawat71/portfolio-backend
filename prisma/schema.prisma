@@ -16,6 +16,8 @@ model User {
   role      String   @default("ADMIN")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("users")
 }
 
 model Skill {
@@ -25,6 +27,8 @@ model Skill {
   type      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("skills")
 }
 
 model Project {
@@ -44,6 +48,8 @@ model Project {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("projects")
 }
 
 model Blog {
@@ -51,7 +57,7 @@ model Blog {
   title       String
   content     String
   image       String?
-  slug        String?   @unique
+  slug        String?  @unique
   summary     String?
   tags        String[]
   author      String
@@ -60,6 +66,8 @@ model Blog {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("blogs")
 }
 
 model Experience {
@@ -72,6 +80,8 @@ model Experience {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("experiences")
 }
 
 model Education {
@@ -84,6 +94,8 @@ model Education {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("educations")
 }
 
 model Contact {
@@ -93,4 +105,6 @@ model Contact {
   message   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("contacts")
 }
