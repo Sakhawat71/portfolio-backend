@@ -9,5 +9,9 @@ router.post(
     AuthController.login
 );
 
+router.post(
+    "/register",
+    AuthController.register
+);
 
 export const AuthRoutes = router;
