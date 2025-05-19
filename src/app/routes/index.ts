@@ -3,6 +3,7 @@ import { AuthRoutes } from "../modules/Auth/auth.route";
 import { IRoute } from "../interfaces/router.type";
 import { ProjectRoutes } from "../modules/Project/project.route";
 import { SkillRoutes } from "../modules/Skill/skill.route";
+import { ContactRoutes } from "../modules/Contact/contact.route";
 
 
 const router = Router();
@@ -18,6 +19,10 @@ const routersModule: IRoute[] = [
     {
         path: '/skills',
         route: SkillRoutes,
+    },
+    {
+        path: '/contact',
+        route: ContactRoutes,
     },
 
 ];
