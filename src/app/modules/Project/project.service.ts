@@ -4,8 +4,13 @@ import { fileUploader } from "../../utils/fileUploader";
 import prisma from "../../utils/prisma";
 
 const createProject = async (req: Request) => {
-    if (req.file) {
-        const uploadedImage = await fileUploader.uploadToCloudinary(req.file);
+    const file = req.file;
+    if (!file) {
+        throw new Error("Image is required");
+    };
+
+    if (file) {
+        const uploadedImage = await fileUploader.uploadToCloudinary(file) as { secure_url: string };
         req.body.image = uploadedImage?.secure_url;
     };
 
