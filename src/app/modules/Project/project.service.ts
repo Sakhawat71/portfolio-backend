@@ -19,13 +19,93 @@ const createProject = async (req: Request) => {
     });
 };
 
+const getAllProjects = async () => {
+    const projects = await prisma.project.findMany({
+        orderBy: {
+            createdAt: 'desc',
+        },
+    });
+
+    const totalProjects = await prisma.project.count();
+
+    return {
+        meta: {
+            total: totalProjects,
+        },
+        data: projects,
+    };
+};
+
+const getProjectById = async (id: string) => {
+    const project = await prisma.project.findUnique({
+        where: {
+            id,
+        },
+    });
+
+    if (!project) {
+        throw new Error("Project not found");
+    }
+
+    return project;
+}
+
+const updateProject = async (id: string, req: Request) => {
+
+    const isExist = await prisma.project.findUnique({
+        where: {
+            id,
+        },
+    });
+    if (!isExist) {
+        throw new Error("Project not found");
+    };
+
+    const file = req.file;
+    if (file) {
+        const uploadedImage = await fileUploader.uploadToCloudinary(file) as { secure_url: string };
+        req.body.image = uploadedImage?.secure_url;
+    } else {
+        req.body.image = isExist.image;
+    }
+
+    const project = await prisma.project.update({
+        where: {
+            id,
+        },
+        data: req.body,
+    });
+
+    return project;
+};
+
+const deleteProject = async (id: string) => {
+
+    const isExist = await prisma.project.findUnique({
+        where: {
+            id,
+        },
+    });
+    if (!isExist) {
+        throw new Error("Project not found");
+    };
+
+    const project = await prisma.project.delete({
+        where: {
+            id,
+        },
+    });
+
+    return project;
+};
+
 
 
 
 export const ProjectService = {
     createProject,
-    // updateProject,
-    // deleteProject,
-    // getAllProjects,
-    // getProjectById,
+    getAllProjects,
+    getProjectById,
+    updateProject,
+    deleteProject,
 };
