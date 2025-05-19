@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AuthRoutes } from "../modules/Auth/auth.route";
 import { IRoute } from "../interfaces/router.type";
 import { ProjectRoutes } from "../modules/Project/project.route";
+import { SkillRoutes } from "../modules/Skill/skill.route";
 
 
 const router = Router();
@@ -13,7 +14,12 @@ const routersModule: IRoute[] = [
     {
         path: '/projects',
         route: ProjectRoutes,
-    }
+    },
+    {
+        path: '/skills',
+        route: SkillRoutes,
+    },
+
 ];
 
 routersModule.forEach((r) => {

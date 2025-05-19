@@ -63,7 +63,7 @@ const updateSkill = async (id: string, req: Request) => {
     const file = req.file;
     if (file) {
         const uploadedImage = await fileUploader.uploadToCloudinary(file) as { secure_url: string };
-        req.body.image = uploadedImage?.secure_url;
+        req.body.icon = uploadedImage?.secure_url;
     } else {
         req.body.icon = isExist.icon;
     };
