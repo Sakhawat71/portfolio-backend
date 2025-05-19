@@ -7,3 +7,90 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Skill {
+  id        String   @id @default(uuid())
+  name      String
+  icon      String
+  type      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  image       String
+  techStack   String[]
+  liveUrl     String
+  githubUrl   String
+
+  isTeam     Boolean   @default(false)
+  teamSize   Int?
+  roleInTeam String?
+  startDate  DateTime?
+  endDate    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blog {
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  image       String?
+  slug        String?   @unique
+  summary     String?
+  tags        String[]
+  author      String
+  publishedAt DateTime @default(now())
+  isPublished Boolean? @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Experience {
+  id          String    @id @default(uuid())
+  company     String
+  position    String
+  startDate   DateTime
+  endDate     DateTime?
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Education {
+  id          String    @id @default(uuid())
+  institution String
+  degree      String
+  startDate   DateTime
+  endDate     DateTime?
+  description String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
