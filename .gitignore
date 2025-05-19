@@ -1,3 +1,7 @@
 node_modules
 .env
 generated/prisma
+dist
+.vscode
+package-lock.json
+.vercel
