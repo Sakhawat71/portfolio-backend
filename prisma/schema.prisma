@@ -87,7 +87,7 @@ model Experience {
 model Education {
   id          String    @id @default(uuid())
   institution String
-  degree      String
+  degree      String    @unique
   startDate   DateTime
   endDate     DateTime?
   description String

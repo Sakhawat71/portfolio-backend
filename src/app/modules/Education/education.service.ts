@@ -1,15 +1,22 @@
 import prisma from "../../utils/prisma";
+import { IEducation } from "./education.interface";
 
-const createEducation = async (payload: any) => {
+const createEducation = async (payload: IEducation) => {
     return await prisma.education.create({
-        data: payload
+        data: {
+            institution: payload.institution,
+            degree: payload.degree,
+            startDate: new Date(payload.startDate),
+            endDate: payload.endDate ? new Date(payload.endDate) : null,
+            description: payload.description,
+        }
     });
 };
 
 const getAllEducation = async () => {
     const result = await prisma.education.findMany();
     const total = await prisma.education.count();
-    return{
+    return {
         data: result,
         meta: {
             total

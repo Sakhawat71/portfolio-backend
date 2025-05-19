@@ -16,7 +16,7 @@ router.get(
 );
 
 router.post(
-    "/send-message",
+    "/create-education",
     auth("ADMIN"),
     EducationController.createEducation,
 );
