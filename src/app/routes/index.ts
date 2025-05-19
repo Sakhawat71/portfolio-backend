@@ -5,6 +5,7 @@ import { ProjectRoutes } from "../modules/Project/project.route";
 import { SkillRoutes } from "../modules/Skill/skill.route";
 import { ContactRoutes } from "../modules/Contact/contact.route";
 import { EducationRoutes } from "../modules/Education/education.route";
+import { ExperienceRoutes } from "../modules/Experience/experience.route";
 
 
 const router = Router();
@@ -28,6 +29,10 @@ const routersModule: IRoute[] = [
     {
         path: '/educations',
         route: EducationRoutes,
+    },
+    {
+        path: '/experiences',
+        route: ExperienceRoutes,
     },
 
 ];
