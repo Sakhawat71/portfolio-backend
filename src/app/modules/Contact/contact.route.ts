@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router } from "express";
+import { Router } from "express";
 import auth from "../../middlewares/auth";
 import { ContactController } from "./contact.controller";
 
@@ -19,13 +19,13 @@ router.get(
 
 router.post(
     "/send-message",
-    ContactController.createContact
+    ContactController.createContact,
 );
 
 router.delete(
     '/:id',
     auth("ADMIN"),
-    ContactController.deleteContact
+    ContactController.deleteContact,
 );
 
 
