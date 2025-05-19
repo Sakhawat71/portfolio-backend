@@ -20,7 +20,7 @@ const getAllProjects = catchAsync(async (req, res) => {
     sendResponse(res, {
         statusCode: status.OK,
         success: true,
-        message: 'Categories fetched successfully',
+        message: 'Projects fetched successfully',
         meta: result.meta,
         data: result.data,
     });

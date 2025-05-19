@@ -67,7 +67,11 @@ const updateProject = async (id: string, req: Request) => {
         req.body.image = uploadedImage?.secure_url;
     } else {
         req.body.image = isExist.image;
-    }
+    };
+
+    if(!req.body){
+        req.body = {};
+    };
 
     const project = await prisma.project.update({
         where: {
