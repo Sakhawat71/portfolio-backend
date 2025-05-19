@@ -4,9 +4,7 @@ import { sendResponse } from "../../utils/sendResponse";
 import { AuthService } from "./auth.service";
 
 const login = catchAsync(async (req, res) => {
-
-    const { email, password } = req.body;
-    const resutl = await AuthService.loginInToDB({ email, password });
+    const resutl = await AuthService.loginInToDB(req.body);
     sendResponse(res, {
         statusCode: status.OK,
         success: true,
@@ -17,8 +15,7 @@ const login = catchAsync(async (req, res) => {
 
 
 const register = catchAsync(async (req, res) => {
-    const { name, email, password } = req.body;
-    const resutl = await AuthService.registerInDB({ name, email, password });
+    const resutl = await AuthService.registerInDB(req.body);
     sendResponse(res, {
         statusCode: status.OK,
         success: true,
