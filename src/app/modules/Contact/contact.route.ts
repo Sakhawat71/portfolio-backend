@@ -7,11 +7,13 @@ const router = Router();
 
 router.get(
     "/",
+    auth("ADMIN"),
     ContactController.getAllContacts,
 );
 
 router.get(
     "/:id",
+    auth("ADMIN"),
     ContactController.getContactById,
 );
 
@@ -22,6 +24,7 @@ router.post(
 
 router.delete(
     '/:id',
+    auth("ADMIN"),
     ContactController.deleteContact
 );
 

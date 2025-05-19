@@ -1,11 +1,9 @@
-import { Request } from "express";
 import prisma from "../../utils/prisma";
 
 
-const createContact = async (req: Request) => {
-
+const createContact = async (payload: any) => {
     const result = await prisma.contact.create({
-        data: req.body,
+        data: payload,
     });
     return result;
 };
