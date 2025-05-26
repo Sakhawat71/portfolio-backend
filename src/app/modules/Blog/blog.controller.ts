@@ -14,6 +14,18 @@ const getAllContacts = catchAsync(async (req, res) => {
     });
 });
 
+const getBlogById = catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const blog = await BlogService.getBlogById(id);
+    sendResponse(res, {
+        statusCode: status.OK,
+        success: true,
+        message: "Blog retrieved successfully",
+        data: blog,
+    });
+});
+
 export const BlogController = {
-    getAllContacts
+    getAllContacts,
+    getBlogById,
 };
