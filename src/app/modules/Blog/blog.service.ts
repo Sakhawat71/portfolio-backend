@@ -11,6 +11,18 @@ const getAllBlogs = async () => {
     };
 };
 
+const getBlogById = async (id: string) => {
+    const blog = await prisma.blog.findUnique({
+        where: { id },
+    });
+    if (!blog) {
+        throw new Error("Blog not found");
+    }
+    return blog;
+}
+
 export const BlogService = {
     getAllBlogs,
+    getBlogById,
+    
 };
