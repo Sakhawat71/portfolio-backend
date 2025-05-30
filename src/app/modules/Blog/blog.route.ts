@@ -12,7 +12,6 @@ router.get(
 
 router.get(
     "/:id",
-    auth("ADMIN"),
     BlogController.getBlogById
 );
 
