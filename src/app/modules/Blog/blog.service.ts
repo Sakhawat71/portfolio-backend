@@ -31,7 +31,7 @@ const createBlog = async (req: Request) => {
 
     if (file) {
         const uploadedImage = await fileUploader.uploadToCloudinary(file) as { secure_url: string };
-        req.body.icon = uploadedImage?.secure_url;
+        req.body.image = uploadedImage?.secure_url;
     };
 
     const blog = await prisma.blog.create({
