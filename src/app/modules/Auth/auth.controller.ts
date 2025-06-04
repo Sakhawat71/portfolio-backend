@@ -24,7 +24,19 @@ const register = catchAsync(async (req, res) => {
     });
 });
 
+
+const getStatistics = catchAsync(async (req,res) => {
+    const result = await AuthService.statistics();
+    sendResponse(res, {
+        statusCode: status.OK,
+        success: true,
+        message: "Statistics fetched successfully",
+        data: result,
+    });
+})
+
 export const AuthController = {
     login,
-    register
+    register,
+    getStatistics
 };

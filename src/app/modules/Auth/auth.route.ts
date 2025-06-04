@@ -14,4 +14,9 @@ router.post(
     AuthController.register
 );
 
+router.get(
+    "/statistics",
+    AuthController.getStatistics
+);
+
 export const AuthRoutes = router;

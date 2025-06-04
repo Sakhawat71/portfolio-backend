@@ -56,7 +56,25 @@ const registerInDB = async (payload: IRegister) => {
     return userData;
 };
 
+const statistics = async () => {
+    const blogCount = await prisma.blog.count();
+    const messageCount = await prisma.contact.count();
+    const educationCount = await prisma.education.count();
+    const experienceCount = await prisma.experience.count();
+    const projectCount = await prisma.project.count();
+    const skillCount = await prisma.skill.count();
+    return {
+        blogCount,
+        messageCount,
+        educationCount,
+        experienceCount,
+        projectCount,
+        skillCount
+    };
+};
+
 export const AuthService = {
     loginInToDB,
-    registerInDB
+    registerInDB,
+    statistics
 };
