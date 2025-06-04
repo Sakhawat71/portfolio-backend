@@ -25,7 +25,19 @@ const getBlogById = catchAsync(async (req, res) => {
     });
 });
 
+const createBlog = catchAsync(async (req, res) => {
+    const blogData = req.body;
+    const newBlog = await BlogService.createBlog(blogData);
+    sendResponse(res, {
+        statusCode: status.CREATED,
+        success: true,
+        message: "Blog created successfully",
+        data: newBlog,
+    });
+});
+
 export const BlogController = {
     getAllContacts,
     getBlogById,
+    createBlog
 };
