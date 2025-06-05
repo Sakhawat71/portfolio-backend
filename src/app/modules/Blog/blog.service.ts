@@ -1,6 +1,7 @@
 import { Request } from "express";
 import prisma from "../../utils/prisma";
 import { fileUploader } from "../../utils/fileUploader";
+import { IBlog } from "./blog.interface";
 
 const getAllBlogs = async () => {
     const blogs = await prisma.blog.findMany();
@@ -23,19 +24,9 @@ const getBlogById = async (id: string) => {
     return blog;
 };
 
-const createBlog = async (req: Request) => {
-    const file = req.file;
-    if (!file) {
-        throw new Error("Image is required");
-    };
-
-    if (file) {
-        const uploadedImage = await fileUploader.uploadToCloudinary(file) as { secure_url: string };
-        req.body.image = uploadedImage?.secure_url;
-    };
-
+const createBlog = async (payload: any) => {
     const blog = await prisma.blog.create({
-        data: req.body,
+        data: payload,
     });
     return blog;
 };

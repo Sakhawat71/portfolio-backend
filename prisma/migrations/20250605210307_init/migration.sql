@@ -1,6 +1,5 @@
--- Active: 1746222557834@@127.0.0.1@5432@portfolio@public
 -- CreateTable
-CREATE TABLE "User" (
+CREATE TABLE "users" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -9,11 +8,11 @@ CREATE TABLE "User" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Skill" (
+CREATE TABLE "skills" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "icon" TEXT NOT NULL,
@@ -21,11 +20,11 @@ CREATE TABLE "Skill" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Skill_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "skills_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Project" (
+CREATE TABLE "projects" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
@@ -41,29 +40,28 @@ CREATE TABLE "Project" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Project_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "projects_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Blog" (
+CREATE TABLE "blogs" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "content" TEXT NOT NULL,
-    "image" TEXT,
+    "contentHtml" TEXT NOT NULL,
+    "contentJson" JSONB NOT NULL,
     "slug" TEXT,
-    "summary" TEXT,
     "tags" TEXT[],
-    "author" TEXT NOT NULL,
+    "isDeleted" BOOLEAN NOT NULL DEFAULT false,
     "publishedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "isPublished" BOOLEAN DEFAULT true,
+    "isPublished" BOOLEAN NOT NULL DEFAULT true,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Blog_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "blogs_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Experience" (
+CREATE TABLE "experiences" (
     "id" TEXT NOT NULL,
     "company" TEXT NOT NULL,
     "position" TEXT NOT NULL,
@@ -73,11 +71,11 @@ CREATE TABLE "Experience" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Experience_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "experiences_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Education" (
+CREATE TABLE "educations" (
     "id" TEXT NOT NULL,
     "institution" TEXT NOT NULL,
     "degree" TEXT NOT NULL,
@@ -87,11 +85,11 @@ CREATE TABLE "Education" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Education_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "educations_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Contact" (
+CREATE TABLE "contacts" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -99,11 +97,20 @@ CREATE TABLE "Contact" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Contact_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "contacts_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Blog_slug_key" ON "Blog"("slug");
+CREATE UNIQUE INDEX "projects_title_key" ON "projects"("title");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "blogs_title_key" ON "blogs"("title");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "blogs_slug_key" ON "blogs"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "educations_degree_key" ON "educations"("degree");

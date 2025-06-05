@@ -26,7 +26,7 @@ const getBlogById = catchAsync(async (req, res) => {
 });
 
 const createBlog = catchAsync(async (req, res) => {
-    const newBlog = await BlogService.createBlog(req);
+    const newBlog = await BlogService.createBlog(req.body);
     sendResponse(res, {
         statusCode: status.CREATED,
         success: true,

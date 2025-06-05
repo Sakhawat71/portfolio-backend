@@ -55,14 +55,13 @@ model Project {
 model Blog {
   id          String   @id @default(uuid())
   title       String   @unique
-  content     Json
-  image       String?
+  contentHtml String
+  contentJson Json
   slug        String?  @unique
-  summary     String?
   tags        String[]
-  author      String?
+  isDeleted   Boolean  @default(false)
   publishedAt DateTime @default(now())
-  isPublished Boolean? @default(true)
+  isPublished Boolean @default(true)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
