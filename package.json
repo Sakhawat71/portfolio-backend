@@ -13,6 +13,7 @@
     "dev": "nodemon dist/server.js",
     "prod": "node ./dist/server.js",
     "postinstall": "prisma generate",
+    "seed": "ts-node prisma/seed.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
