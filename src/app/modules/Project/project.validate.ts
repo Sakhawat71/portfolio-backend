@@ -14,12 +14,25 @@ const createProject = z.object({
     ).nonempty("At least one technology is required"),
 
     liveUrl: z.string()
-        .url("Please enter a valid URL")
-        .startsWith('https://', "URL must start with https://"),
+        .url("Please enter a valid URL"),
+    // .startsWith('https://', "URL must start with https://"),
 
     githubUrl: z.string()
-        .url("Please enter a valid GitHub URL")
-        .includes('github.com', { message: "Must be a GitHub URL" }),
+        .url("Please enter a valid GitHub URL"),
+    // .includes('github.com', { message: "Must be a GitHub URL" }),
+    isTeam: z.boolean().optional(),
+    teamSize: z.number().nullable().optional(),
+    roleInTeam: z.string().nullable().optional(),
+    startDate: z.preprocess(
+        (val) => (typeof val === 'string' || typeof val === 'number' || val instanceof Date) && val ? new Date(val) : null,
+        z.date().nullable()
+    ),
+    endDate: z.preprocess(
+        (val) => (typeof val === 'string' || typeof val === 'number' || val instanceof Date) && val ? new Date(val) : null,
+        z.date().nullable()
+    ),
+
+
 });
 
 
@@ -47,6 +60,12 @@ const updateProject = z.object({
         .url("Please enter a valid GitHub URL")
         .includes('github.com', { message: "Must be a GitHub URL" })
         .optional(),
+
+    isTeam: z.boolean().optional(), // or .default(false)
+    teamSize: z.number().nullable().optional(),
+    roleInTeam: z.string().nullable().optional(),
+    startDate: z.string().nullable().optional(),
+    endDate: z.string().nullable().optional(),
 });
 
 
