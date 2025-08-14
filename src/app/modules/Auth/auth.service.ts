@@ -29,6 +29,11 @@ const loginInToDB = async (payload: ILogin) => {
 
     return {
         accessToken,
+        user: {
+            id: userData.id,
+            email: userData.email,
+            role: userData.role,
+        }
     };
 };
 
