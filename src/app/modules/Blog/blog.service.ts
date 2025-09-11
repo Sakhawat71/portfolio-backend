@@ -4,7 +4,11 @@ import { fileUploader } from "../../utils/fileUploader";
 import { IBlog } from "./blog.interface";
 
 const getAllBlogs = async () => {
-    const blogs = await prisma.blog.findMany();
+    const blogs = await prisma.blog.findMany({
+        orderBy: {
+            createdAt: 'desc',
+        },
+    });
     const total = await prisma.blog.count();
     return {
         meta: {
