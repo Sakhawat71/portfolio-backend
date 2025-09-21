@@ -39,6 +39,8 @@ model Project {
   techStack   String[]
   liveUrl     String
   githubUrl   String
+  backGitUrl  String?
+  level       String
 
   isTeam     Boolean   @default(false)
   teamSize   Int?
@@ -61,7 +63,7 @@ model Blog {
   tags        String[]
   isDeleted   Boolean  @default(false)
   publishedAt DateTime @default(now())
-  isPublished Boolean @default(true)
+  isPublished Boolean  @default(true)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
