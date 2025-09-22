@@ -40,7 +40,7 @@ model Project {
   liveUrl     String
   githubUrl   String
   backGitUrl  String?
-  level       String?
+  category    String?
 
   isTeam     Boolean   @default(false)
   teamSize   Int?
