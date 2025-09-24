@@ -33,18 +33,23 @@ model Skill {
 
 model Project {
   id          String   @id @default(uuid())
+  
   title       String   @unique
   description String
   image       String
+
   techStack   String[]
+  highlights  String[]
+  category    String
+
   liveUrl     String
   githubUrl   String
   backGitUrl  String?
-  category    String?
 
   isTeam     Boolean   @default(false)
   teamSize   Int?
   roleInTeam String?
+  
   startDate  DateTime?
   endDate    DateTime?
 
