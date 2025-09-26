@@ -19,7 +19,7 @@ const createProject = z.object({
     githubUrl: z.string()
         .url("Please enter a valid GitHub URL"),
     // .includes('github.com', { message: "Must be a GitHub URL" }),
-    backGitUrl: z.string().url("Please enter a valid Backend GitHub URL").optional(),
+    backGitUrl: z.string().optional(),
     category: z.enum(["HTML-CSS", "JavaScript", "FrontEnd", "MERN", "Full Stack"], {
         errorMap: () => ({ message: "Please select a valid category" })
     }),
