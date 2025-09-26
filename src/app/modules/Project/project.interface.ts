@@ -5,7 +5,8 @@ export interface IProject {
   techStack: string[];
   liveUrl: string;
   githubUrl: string;
-  
+  highlights : string[];
+  category: string;
   isTeam?: boolean;
   teamSize?: number;
   roleInTeam?: string;
