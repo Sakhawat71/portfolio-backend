@@ -16,10 +16,16 @@ const createProject = z.object({
     liveUrl: z.string()
         .url("Please enter a valid URL"),
     // .startsWith('https://', "URL must start with https://"),
-
     githubUrl: z.string()
         .url("Please enter a valid GitHub URL"),
     // .includes('github.com', { message: "Must be a GitHub URL" }),
+    backGitUrl: z.string().url("Please enter a valid Backend GitHub URL").optional(),
+    category: z.enum(["HTML-CSS", "JavaScript", "FrontEnd", "MERN", "Full Stack"], {
+        errorMap: () => ({ message: "Please select a valid category" })
+    }),
+    highlights: z.array(
+        z.string().min(1, "Highlight item can't be empty")
+    ),
     isTeam: z.boolean().optional(),
     teamSize: z.number().nullable().optional(),
     roleInTeam: z.string().nullable().optional(),
