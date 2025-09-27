@@ -7,7 +7,7 @@ const createProject = z.object({
 
     description: z.string()
         .min(10, "Description must be at least 10 characters")
-        .max(500, "Description can't exceed 500 characters"),
+        .max(3000, "Description can't exceed 3000 characters"),
 
     techStack: z.array(
         z.string().min(1, "Tech stack item can't be empty")
