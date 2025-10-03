@@ -1,7 +1,8 @@
 import prisma from "../../utils/prisma";
+import { IContact } from "./contact.interface";
 
 
-const createContact = async (payload: any) => {
+const createContact = async (payload: IContact) => {
     const result = await prisma.contact.create({
         data: payload,
     });

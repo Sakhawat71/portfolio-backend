@@ -11,6 +11,6 @@ export const createContact = z.object({
         .max(100, "Email can't exceed 100 characters"),
 
     message: z.string()
-        .min(10, "Message must be at least 10 characters")
+        .min(1, "Message must be at least 1 characters")
         .max(1000, "Message can't exceed 1000 characters")
 });
